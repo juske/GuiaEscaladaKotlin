@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">GuiaDeEscalada</string>
+
+    <!-- Home Activity -->
+    <string name="ha_topos_button">Topos</string>
+    <string name="ha_topos_button_description">Botón de topos</string>
+    <string name="ha_contact_button">Contacto</string>
+    <string name="ha_gyms_button">Gimnasios de escalada</string>
+    <string name="ha_converter_button">Convertidor de Graduación</string>
+    <string name="ha_logo_description">Guía de escalada</string>
+    <string name="ha_background_image">Background image</string>
+    <string name="ha_search">Buscar ruta o lugar...</string>
 </resources>

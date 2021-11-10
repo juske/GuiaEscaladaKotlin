@@ -1,4 +1,4 @@
-package independent.dev.ui.HomeActivity
+package independent.dev.presentation.home
 
 import org.junit.Test
 
