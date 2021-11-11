@@ -10,4 +10,8 @@
     <string name="ha_logo_description">Guía de escalada</string>
     <string name="ha_background_image">Background image</string>
     <string name="ha_search">Buscar ruta o lugar...</string>
+
+
+    <!-- Unit Converter Activity -->
+    <string name="unit_converter_activity_name">UnitConverterActivity</string>
 </resources>

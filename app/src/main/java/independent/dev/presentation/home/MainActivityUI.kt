@@ -2,6 +2,7 @@ package independent.dev.presentation.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -37,12 +39,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import independent.dev.presentation.Screen
 import independent.dev.presentation.theme.fontFamily
 
 @Composable
-fun MainActivityUI(
-    navController: NavController
-) {
+fun MainActivityUI(navController: NavController) {
     Image(
         painter = painterResource(id = R.drawable.home_background),
         contentDescription = stringResource(id = R.string.ha_background_image),
@@ -65,7 +66,7 @@ fun MainActivityUI(
                     .fillMaxWidth()
                     .padding(16.dp),
                 onSearch = {
-                    //TODO: Implement search logic
+                    navController.navigate(Screen.UnitConverterScreen.route)
                 }
             )
         }
@@ -90,14 +91,16 @@ fun MainActivityUI(
                     .padding(start = 5.dp, bottom = 5.dp, end = 5.dp)
                     .weight(1f)
             ) {
-                Button(
+                HomeButtons(
                     stringResource(id = R.string.ha_topos_button),
-                    Modifier.weight(1f)
+                    Modifier.weight(1f),
+                    navigateOnClick = {}
                 )
                 Divider(whichType = "vertical")
-                Button(
+                HomeButtons(
                     stringResource(id = R.string.ha_gyms_button),
-                    Modifier.weight(1f)
+                    Modifier.weight(1f),
+                    navigateOnClick = {}
                 )
             }
             Row(
@@ -120,14 +123,18 @@ fun MainActivityUI(
                     .padding(horizontal = 5.dp)
                     .weight(1f)
             ) {
-                Button(
+                HomeButtons(
                     stringResource(id = R.string.ha_converter_button),
-                    Modifier.weight(1f)
+                    Modifier.weight(1f),
+                    navigateOnClick = {
+                        navController.navigate(Screen.UnitConverterScreen.route)
+                    }
                 )
                 Divider(whichType = "vertical")
-                Button(
+                HomeButtons(
                     stringResource(id = R.string.ha_contact_button),
-                    Modifier.weight(1f)
+                    Modifier.weight(1f),
+                    navigateOnClick = {}
                 )
             }
         }
@@ -135,11 +142,14 @@ fun MainActivityUI(
 }
 
 @Composable
-fun Button(text: String, modifier: Modifier) {
+fun HomeButtons(text: String, modifier: Modifier, navigateOnClick: () -> Unit) {
     Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+        modifier = modifier.clickable {
+            navigateOnClick()
+        },
+        horizontalAlignment = Alignment.CenterHorizontally,
+
+        ) {
         Image(
             painter = painterResource(id = R.drawable.topos_icon),
             contentDescription = stringResource(id = R.string.ha_topos_button_description)
